@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 236 232 227;
+  --panel: 241 238 234;
+  --ink: 26 24 23;
+  --muted: 113 108 103;
+  --hero-bg:
+    radial-gradient(620px 420px at 0% 100%, rgba(238, 212, 207, .55), transparent 62%),
+    linear-gradient(180deg, #efece7 0%, #e9e5e0 100%);
+}
+.dark {
+  --bg: 14 13 12;
+  --panel: 23 21 20;
+  --ink: 239 235 229;
+  --muted: 163 158 151;
+  --hero-bg:
+    radial-gradient(640px 460px at 100% 0%, rgba(255, 190, 110, .10), transparent 60%),
+    linear-gradient(180deg, #161413 0%, #0f0e0d 100%);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+  font-family: Inter, system-ui, sans-serif;
+  transition: background .5s, color .5s;
+}
+.perspective { perspective: 1200px; }
+.preserve-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+html { scrollbar-gutter: stable; }
+
+@keyframes phone-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.phone-float { animation: phone-float 6s ease-in-out infinite; }
+
+@keyframes story-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.story-rise { animation: story-rise .6s cubic-bezier(.16, 1, .3, 1) both; }
+
+.story-bg {
+  background:
+    radial-gradient(640px 520px at 0% 0%, rgba(244, 170, 128, .70), transparent 65%),
+    radial-gradient(620px 460px at 100% 100%, rgba(228, 184, 190, .65), transparent 65%),
+    #f7f4f0;
+}
+.dark .story-bg {
+  background:
+    radial-gradient(640px 520px at 0% 0%, rgba(214, 120, 70, .28), transparent 65%),
+    radial-gradient(620px 460px at 100% 100%, rgba(150, 80, 110, .25), transparent 65%),
+    #100f0e;
+}
+.story-texture {
+  background-image: repeating-linear-gradient(115deg, rgba(26, 24, 23, .03) 0 1px, transparent 1px 8px);
+}
+.dark .story-texture {
+  background-image: repeating-linear-gradient(115deg, rgba(255, 255, 255, .03) 0 1px, transparent 1px 8px);
+}
